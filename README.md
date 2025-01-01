@@ -2,7 +2,7 @@
 
 *Read this in other languages: [English](README.md), [Portuguese](README.pt-br.md)*
 
-A cross-platform system resource monitor written in Rust that provides real-time information about CPU, memory, GPU, and network in an interactive terminal interface.
+A cross-platform system resource monitor written in Rust that provides real-time information about CPU, memory, GPU, and network in an interactive terminal interface. This is a learning project as I'm exploring Rust, so while fully functional, the code might not follow all best practices.
 
 ![Status: In Development](https://img.shields.io/badge/Status-In%20Development-yellow)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green)

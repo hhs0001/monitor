@@ -2,7 +2,7 @@
 
 *Leia em outros idiomas: [Inglês](README.md), [Português](README.pt-br.md)*
 
-Um monitor de recursos do sistema multiplataforma escrito em Rust, que fornece informações em tempo real sobre CPU, memória, GPU e rede em uma interface de terminal interativa.
+Um monitor de recursos do sistema multiplataforma escrito em Rust, que fornece informações em tempo real sobre CPU, memória, GPU e rede em uma interface de terminal interativa. Este é um projeto de aprendizado enquanto exploro Rust, então, embora totalmente funcional, o código pode não seguir todas as melhores práticas.
 
 ![Status: Em Desenvolvimento](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow)
 ![Licença: MIT](https://img.shields.io/badge/Licença-MIT-green)
