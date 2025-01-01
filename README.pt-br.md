@@ -21,6 +21,13 @@ Um monitor de recursos do sistema multiplataforma escrito em Rust, que fornece i
 
 ## Instalação
 
+### Binários Pré-compilados
+
+Você pode baixar os binários pré-compilados para seu sistema operacional na página de [Releases](https://github.com/hhs0001/monitor/releases). Disponível para:
+- Windows (x64)
+- Linux (x64)
+- macOS (Intel x64 e Apple Silicon)
+
 ### Usando o Script de Instalação
 
 ```bash

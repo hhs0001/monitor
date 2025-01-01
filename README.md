@@ -21,6 +21,13 @@ A cross-platform system resource monitor written in Rust that provides real-time
 
 ## Installation
 
+### Pre-compiled Binaries
+
+You can download the pre-compiled binaries for your operating system from the [Releases](https://github.com/hhs0001/monitor/releases) page. Available for:
+- Windows (x64)
+- Linux (x64)
+- macOS (Intel x64 and Apple Silicon)
+
 ### Using Installation Script
 
 ```bash
