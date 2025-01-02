@@ -13,7 +13,6 @@ pub enum GpuType {
     Nvidia,
     Amd,
     Intel,
-    Unknown,
 }
 
 #[derive(Clone)]
@@ -106,13 +105,35 @@ fn detect_gpu() -> Result<(GpuType, String), Box<dyn Error>> {
         .output()?;
 
     let output = String::from_utf8_lossy(&output.stdout);
+    let output_lower = output.to_lowercase();
 
-    if output.contains("AMD") {
-        Ok((GpuType::Amd, "AMD GPU".to_string()))
-    } else if output.contains("NVIDIA") {
-        Ok((GpuType::Nvidia, "NVIDIA GPU".to_string()))
+    // Detectar modelo específico
+    let model = output
+        .lines()
+        .find(|line| {
+            line.contains("Chip") || 
+            line.contains("Model") || 
+            line.contains("Chipset") ||
+            line.contains("Processor")
+        })
+        .and_then(|line| line.split(':').nth(1))
+        .map(|s| s.trim())
+        .unwrap_or_else(|| {
+            if output_lower.contains("apple m") || output_lower.contains("apple silicon") {
+                "Apple Silicon GPU"
+            } else {
+                "Apple GPU"
+            }
+        });
+
+    if output_lower.contains("amd") || output_lower.contains("radeon") {
+        Ok((GpuType::Amd, format!("AMD {}", model)))
+    } else if output_lower.contains("nvidia") {
+        Ok((GpuType::Nvidia, format!("NVIDIA {}", model)))
+    } else if output_lower.contains("apple m") || output_lower.contains("apple silicon") {
+        Ok((GpuType::Intel, format!("Apple {}", model))) // Usando Intel como tipo para Apple Silicon
     } else {
-        Ok((GpuType::Intel, "Intel GPU".to_string()))
+        Ok((GpuType::Intel, model.to_string()))
     }
 }
 

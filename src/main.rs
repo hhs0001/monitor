@@ -619,9 +619,12 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         return Ok(());
     }
 
-    // Initialize NVML conditionally
-    let nvml = if !config.no_gpu {
-        Some(Nvml::init()?)
+    // Initialize NVML conditionally - skip on macOS
+    let nvml = if !config.no_gpu && !cfg!(target_os = "macos") {
+        match Nvml::init() {
+            Ok(nvml) => Some(nvml),
+            Err(_) => None,
+        }
     } else {
         None
     };
